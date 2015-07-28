@@ -11,5 +11,10 @@ class SessionsController < ApplicationController
   end
 
   def index
+
+  	p '=============='
+  	p current_user.uid
+  	p '=============='
+
   end
 end
