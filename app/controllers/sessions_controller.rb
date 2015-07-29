@@ -9,12 +9,4 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     redirect_to root_url
   end
-
-  def index
-
-  	p '=============='
-  	p current_user.uid
-  	p '=============='
-
-  end
 end
