@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
 
 	def index
+		p ENV["RIOT_KEY"]
 	end
 
 	def show
