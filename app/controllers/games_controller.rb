@@ -1,7 +1,13 @@
 class GamesController < ApplicationController
 
 	def index
-		p ENV["RIOT_KEY"]
+		game = Game.first
+		current_month = Time.now.strftime("%m")
+
+		if current_month != game.current_month
+			p "check to update new champs list"
+		end
+
 	end
 
 	def show
