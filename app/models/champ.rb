@@ -15,8 +15,13 @@ class Champ < ActiveRecord::Base
 		return response_to_json
 	end
 
-	def check_for_update
-
+	def update_champs
+		riot_api_call['data'].each do |key, value|
+			if !Champ.exists?(name: key)
+				image_path = "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/" + key + "_0.jpg"
+				Champ.create(name: key, riot_id: value["id"], img_url: image_path)
+			end
+		end
 	end
 
 	# =============================
