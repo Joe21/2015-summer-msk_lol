@@ -1,13 +1,14 @@
 class Champ < ActiveRecord::Base
 
-	def initial_seed
+	# Instance Methods to handle champ db maintanence
+	def self.initial_seed
 		riot_api_call['data'].each do |key, value|
 			image_path = "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/" + key + "_0.jpg"
 			Champ.create(name: key, riot_id: value["id"], img_url: image_path)
 		end
 	end
 
-	def riot_api_call
+	def self.riot_api_call
 		request = "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion?api_key=" + ENV['RIOT_KEY']
 		response = HTTParty.get(request)
 		response_to_json = JSON.parse(response.body)
@@ -15,7 +16,7 @@ class Champ < ActiveRecord::Base
 		return response_to_json
 	end
 
-	def update_champs
+	def self.update_champs
 		riot_api_call['data'].each do |key, value|
 			if !Champ.exists?(name: key)
 				image_path = "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/" + key + "_0.jpg"

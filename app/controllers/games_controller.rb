@@ -1,13 +1,13 @@
 class GamesController < ApplicationController
 
 	def index
+		# Monthly Check for new champs without having to schedule server worker
 		game = Game.first
 		current_month = Time.now.strftime("%m")
 
 		if current_month != game.current_month
-			p "check to update new champs list"
+			Champ.update_champs
 		end
-
 	end
 
 	def show

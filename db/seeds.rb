@@ -6,4 +6,4 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Game.create([{current_month: Time.now.strftime("%m")}])
-Champ.new.initial_seed
+Champ.initial_seed
