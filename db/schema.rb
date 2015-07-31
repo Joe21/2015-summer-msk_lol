@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150730211811) do
+ActiveRecord::Schema.define(version: 20150731191121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,14 @@ ActiveRecord::Schema.define(version: 20150730211811) do
     t.string   "current_month"
   end
 
+  create_table "rounds", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "champ_id"
+  end
+
+  add_index "rounds", ["champ_id"], name: "index_rounds_on_champ_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "provider"
     t.string   "uid"
@@ -45,4 +53,5 @@ ActiveRecord::Schema.define(version: 20150730211811) do
     t.datetime "updated_at",       null: false
   end
 
+  add_foreign_key "rounds", "champs"
 end

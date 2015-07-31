@@ -28,6 +28,7 @@ class GamesController < ApplicationController
 	end
 
 	def play
+		@bla = Round.generate_champs
 	end
 
 end

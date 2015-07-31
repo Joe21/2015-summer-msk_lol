@@ -1,0 +1,21 @@
+1. round.rb Removed has_many :champs
+2. Removed
+
+class AddingChampsBelongToRounds < ActiveRecord::Migration
+  def change
+  	add_reference :rounds, :champ, index: true
+  	add_foreign_key :rounds, :champs
+  end
+end
+
+
+3. Removed
+
+class CreateRounds < ActiveRecord::Migration
+  def change
+    create_table :rounds do |t|
+      t.timestamps null: false
+    end
+  end
+end
+

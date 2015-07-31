@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'games#index'
 
+  get 'play' => 'games#play'
+
   get 'auth/:provider/callback' => 'sessions#create'
   get 'auth/failure' => redirect('/')
   get 'signout' => 'sessions#destroy', as: 'signout'
