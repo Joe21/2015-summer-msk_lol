@@ -1,5 +1,18 @@
 class Champ < ActiveRecord::Base
 
+	# Handle Scoreboard Queries
+	def self.marry_leaders
+		return Champ.order("marry_count DESC").limit(10)
+	end
+
+	def self.sleep_leaders
+		return Champ.order("sleep_count DESC").limit(10)
+	end
+
+	def self.kill_leaders
+		return Champ.order("kill_count DESC").limit(10)
+	end
+
 	# Instance Methods to handle champ db maintanence
 	def self.initial_seed
 		riot_api_call['data'].each do |key, value|

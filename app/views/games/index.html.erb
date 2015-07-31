@@ -1,1 +1,18 @@
-HI!
+<h1>Welcome</h1>
+
+<h3>Top 10 - Marry</h3>
+<% @champs_marry_leaders.each do |champ| %>
+	<div><%= champ.name %> : <%= champ.marry_count %> votes to marry</div>
+<% end %>
+
+<h3>Top 10 - Sleep</h3>
+<% @champs_sleep_leaders.each do |champ| %>
+	<div><%= champ.name %> : <%= champ.sleep_count %> votes to sleep</div>
+<% end %>
+
+<h3>Top 10 - Kill</h3>
+<% @champs_kill_leaders.each do |champ| %>
+	<div><%= champ.name %> : <%= champ.kill_count %> votes to kill</div>
+<% end %>
+
+<button>Play Game</button>
