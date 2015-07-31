@@ -1,5 +1,4 @@
 class Champ < ActiveRecord::Base
-	belongs_to :round
 
 	# Handle Scoreboard Queries
 	def self.marry_leaders
