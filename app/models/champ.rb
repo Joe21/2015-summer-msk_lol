@@ -1,5 +1,4 @@
 class Champ < ActiveRecord::Base
-
 	# Handle Scoreboard Queries
 	def self.marry_leaders
 		return Champ.order("marry_count DESC").limit(10)
