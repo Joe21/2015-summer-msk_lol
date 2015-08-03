@@ -1,3 +1,5 @@
 <h1>TESTING</h1>
 
-<%= @bla %>
+<% @participants.each do |x| %>
+<h1><%= x.name %></h1>
+<% end %>

@@ -14,7 +14,11 @@ class GamesController < ApplicationController
 	end
 
 	def play
-		@bla = Round.generate_champs
+		new_round = Round.new()
+		new_round.initialize_participants
+
+		@participants = new_round.champs
+
 	end
 
 end
