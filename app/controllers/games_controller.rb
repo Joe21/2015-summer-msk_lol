@@ -1,14 +1,10 @@
 class GamesController < ApplicationController
 
 	def index
-		# Monthly Check for new champs without having to schedule server worker
-		game = Game.first
-		current_month = Time.now.strftime("%m")
+		# Check if new month. If so, will run Champ.update_champs
+		Game.check_for_update
 
-		if current_month != game.current_month
-			Champ.update_champs
-		end
-
+		# Instance variables
 		@champs_marry_leaders = Champ.marry_leaders
 		@champs_sleep_leaders = Champ.sleep_leaders
 		@champs_kill_leaders = Champ.kill_leaders
