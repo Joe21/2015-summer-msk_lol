@@ -15,10 +15,14 @@ class GamesController < ApplicationController
 
 	def play
 		new_round = Round.new()
+		# Randomly select 9 champs
 		new_round.initialize_participants
 
-		@participants = new_round.champs
-
+		# Convert to array
+		array_of_champs = new_round.champs.map { |champ| champ }
+		
+		# Return hash of selected champs split into 3 matches 
+		@data = new_round.split_into_matches(array_of_champs)
 	end
 
 end
