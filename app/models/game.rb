@@ -1,4 +1,5 @@
 class Game < ActiveRecord::Base
+	validates :current_month, presence: true
 	
 	def self.check_for_update
 		game = Game.first

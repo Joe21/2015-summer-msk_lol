@@ -34,3 +34,11 @@ end
 		data['available_champs'] = available_champs
 		return data
 	end
+
+		# Use pluck to create matches, faster query, less taxing on DB
+		# @bla = Champ.all.pluck(:riot_id)
+		# p '============='
+		# @bla.each do |x|
+		# 	p x
+		# end
+		# p '============='

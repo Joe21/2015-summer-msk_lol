@@ -1,4 +1,8 @@
 class Champ < ActiveRecord::Base
+	validates :name, presence: true
+	validates :riot_id, presence: true
+	validates :img_url, presence: true
+	
 	has_many :matchmakers
 	has_many :rounds, through: :matchmakers
 
@@ -15,7 +19,11 @@ class Champ < ActiveRecord::Base
 		return Champ.order("kill_count DESC").limit(10)
 	end
 
+	# ================================================ 
 	# Instance Methods to handle champ db maintanence
+	# ================================================ 
+
+	# Method used in seed.rb
 	def self.initial_seed
 		riot_api_call['data'].each do |key, value|
 			image_path = "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/" + key + "_0.jpg"
@@ -23,6 +31,7 @@ class Champ < ActiveRecord::Base
 		end
 	end
 
+	# Makes the riot api call, refer to API documentation at the very bottom
 	def self.riot_api_call
 		request = "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion?api_key=" + ENV['RIOT_KEY']
 		response = HTTParty.get(request)
@@ -31,6 +40,7 @@ class Champ < ActiveRecord::Base
 		return response_to_json
 	end
 
+	# If champ name doesn't exist in DB, create it
 	def self.update_champs
 		riot_api_call['data'].each do |key, value|
 			if !Champ.exists?(name: key)
