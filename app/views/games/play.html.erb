@@ -1,7 +1,1 @@
 <h1>TESTING</h1>
-
-<%= form_for(:round, url: champ_update_path(@champs), html: {method: 'patch'}) do |f| %>
-	<%= fields_for :round, @champs do |champ| %>
-		<div><%= champ.name %></div>
-	<% end %>
-<% end %>
