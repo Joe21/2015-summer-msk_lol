@@ -1,7 +1,10 @@
 <h1>TESTING</h1>
 
 <%= form_for(@round, url: champ_update_path, html: {method: "patch"}) do |f| %>
-	<% @champs.each do |champ| %>
-		<%= f.label champ.name %>
+<div class="champs1-container">
+	<%  @champs1.each do |champ| %>	
+	<div><%= f.label champ.name %></div>
+	<img src=<%= champ.img_url %> >
 	<% end %>
+</div>
 <% end %>
