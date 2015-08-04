@@ -1,11 +1,46 @@
 Rails.application.routes.draw do
   root 'games#index'
 
+  # resources :champs
   get 'play' => 'games#play'
+  patch 'play/update' => 'champs#update', as: 'champ_update'
 
   get 'auth/:provider/callback' => 'sessions#create'
   get 'auth/failure' => redirect('/')
   get 'signout' => 'sessions#destroy', as: 'signout'
+
+# Rake routes
+
+#         root GET   /                                  games#index
+#         play GET   /play(.:format)                    games#play
+# champ_update PATCH /play/update(.:format)             champs#update
+#              GET   /auth/:provider/callback(.:format) sessions#create
+# auth_failure GET   /auth/failure(.:format)            redirect(301, /)
+#      signout GET   /signout(.:format)                 sessions#destroy
+
+
+
+
+#       Prefix Verb   URI Pattern                        Controller#Action
+#         root GET    /                                  games#index
+#       champs GET    /champs(.:format)                  champs#index
+#              POST   /champs(.:format)                  champs#create
+#    new_champ GET    /champs/new(.:format)              champs#new
+#   edit_champ GET    /champs/:id/edit(.:format)         champs#edit
+#        champ GET    /champs/:id(.:format)              champs#show
+#              PATCH  /champs/:id(.:format)              champs#update
+#              PUT    /champs/:id(.:format)              champs#update
+#              DELETE /champs/:id(.:format)              champs#destroy
+#         play GET    /play(.:format)                    games#play
+#              GET    /auth/:provider/callback(.:format) sessions#create
+# auth_failure GET    /auth/failure(.:format)            redirect(301, /)
+#      signout GET    /signout(.:format)                 sessions#destroy
+
+
+
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

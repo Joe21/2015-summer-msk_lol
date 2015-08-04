@@ -15,5 +15,5 @@ class User < ActiveRecord::Base
 	    end
 	    user.save!
 	  end
-	end	
+	end
 end
