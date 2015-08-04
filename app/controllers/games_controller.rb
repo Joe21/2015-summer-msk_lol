@@ -14,11 +14,11 @@ class GamesController < ApplicationController
 	end
 
 	def play
-		new_round = Round.new()
+		@round = Round.new()
 		# Randomly select 9 champs
-		new_round.initialize_participants
+		@round.initialize_participants
 
-		@champs = new_round.champs
+		@champs = @round.champs
 		# # Convert to array
 		# array_of_champs = new_round.champs.map { |champ| champ }
 		
