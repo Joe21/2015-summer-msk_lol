@@ -1,10 +1,105 @@
-<h1>TESTING</h1>
-
 <%= form_for(@round, url: champ_update_path, html: {method: "patch"}) do |f| %>
-<div class="champs1-container">
-	<%  @champs1.each do |champ| %>	
-	<div><%= f.label champ.name %></div>
-	<img src=<%= champ.img_url %> >
-	<% end %>
-</div>
+<div class="champs-container" id="round1">
+	<h3 class="round-title">Round 1</h3>
+	<br>
+	<div class="champs-display">
+		<% @champs1.each do |champ| %>
+			<%= f.label champ.name %>
+		<% end %>
+
+		<%  @champs1.each do |champ| %>	
+		<img class="pull-left" src=<%= champ.img_url %> >
+		<% end %>
+	</div>
+
+	<div class="label-container">
+		<%= label_tag(:marry, "Marry") %>
+	</div>
+	
+	<div class="button-container">
+		<%  @champs1.each do |champ| %>
+		<div class="radio-container">
+			<%= radio_button_tag(:marry, champ.id) %>
+		</div>
+		<% end %>
+	</div>
+
+	<div class="label-container">
+		<%= label_tag(:sleep, "Sleep") %>
+	</div>
+	
+	<div class="button-container">
+		<%  @champs1.each do |champ| %>
+		<div class="radio-container">
+			<%= radio_button_tag(:sleep, champ.id) %>
+		</div>
+		<% end %>
+	</div>
+
+	<div class="label-container">
+		<%= label_tag(:kill, "Kill") %>
+	</div>
+	
+	<div class="button-container">
+		<%  @champs1.each do |champ| %>
+		<div class="radio-container">
+			<%= radio_button_tag(:kill, champ.id) %>
+		</div>
+		<% end %>
+	</div>
+</div> <!-- Close round 1 -->
+
+<div class="champs-container" id="round2">
+	<h3 class="round-title">Round 2</h3>
+	<br>
+	<div class="champs-display">
+		<% @champs2.each do |champ| %>
+			<%= f.label champ.name %>
+		<% end %>
+
+		<%  @champs2.each do |champ| %>	
+		<img class="pull-left" src=<%= champ.img_url %> >
+		<% end %>
+	</div>
+
+	<div class="label-container">
+		<%= label_tag(:marry, "Marry") %>
+	</div>
+	
+	<div class="button-container">
+		<%  @champs2.each do |champ| %>
+		<div class="radio-container">
+			<%= radio_button_tag(:marry, champ.id) %>
+		</div>
+		<% end %>
+	</div>
+</div> <!-- Close round 2 -->
+
+
+<div class="champs-container" id="round3">
+	<h3 class="round-title">Round 3</h3>
+	<br>
+	<div class="champs-display">
+		<% @champs3.each do |champ| %>
+			<%= f.label champ.name %>
+		<% end %>
+
+		<%  @champs3.each do |champ| %>	
+		<img class="pull-left" src=<%= champ.img_url %> >
+		<% end %>
+	</div>
+
+	<div class="label-container">
+		<%= label_tag(:marry, "Marry") %>
+	</div>
+	
+	<div class="button-container">
+		<%  @champs3.each do |champ| %>
+		<div class="radio-container">
+			<%= radio_button_tag(:marry, champ.id) %>
+		</div>
+		<% end %>
+	</div>
+</div> <!-- Close round 3 -->
 <% end %>
+
